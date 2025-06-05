@@ -1,8 +1,8 @@
 -- 插入測試使用者
 INSERT INTO user (user_name, email, password, phone_number)
 VALUES
-    ('Alice', 'alice@example.com', 'hashedpwd123', '0911111111'),
-    ('Bob', 'bob@example.com', 'hashedpwd456', '0922222222');
+    ('Alice', 'alice@example.com', SHA2(CONCAT('password123', 'salt123'), 256), '0911111111'),
+    ('Bob', 'bob@example.com', SHA2(CONCAT('password456', 'salt123'), 256), '0922222222');
 
 -- 插入測試發文
 INSERT INTO post (user_id, content)
