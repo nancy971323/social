@@ -1,3 +1,5 @@
+-- 要求：資料庫的DDL 和DML 請存放在專案下的\DB 資料夾內提供 - 資料定義語言檔案
+
 -- 建立使用者資料表
 create table user
 (
@@ -10,8 +12,6 @@ create table user
     phone_number varchar(10)  not null,
     constraint user_pk_2
         unique (user_name),
-    constraint user_pk_3
-        unique (password),
     constraint user_pk_4
         unique (phone_number)
 );

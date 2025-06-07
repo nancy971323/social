@@ -41,7 +41,7 @@ CREATE PROCEDURE sp_user_login (
     IN p_password VARCHAR(100)
 )
 BEGIN
-    SELECT user_id, user_name, email
+    SELECT user_id, user_name, email, biography
     FROM user
     WHERE phone_number = p_phone_number AND password = SHA2(CONCAT(p_password, 'salt123'), 256);
 END$$
@@ -99,6 +99,17 @@ BEGIN
     SET user_name = p_user_name,
         email = p_email,
         biography = p_biography
+    WHERE user_id = p_user_id;
+END$$
+
+-- 更新使用者個人簡介
+CREATE PROCEDURE sp_update_user_biography (
+    IN p_user_id BIGINT,
+    IN p_biography TEXT
+)
+BEGIN
+    UPDATE user
+    SET biography = p_biography
     WHERE user_id = p_user_id;
 END$$
 
